@@ -1,7 +1,7 @@
 from fastapi import APIRouter
+from . import example_route
 
 router = APIRouter()
 
 # Include your route definitions here, for example:
-# from . import example_route
-# router.include_router(example_route.router)
+router.include_router(example_route.router)

@@ -1,19 +1,46 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import example_route  # Import your routes here
+from app.config import config
+from app.database import init_db
+from app.routes.auth import router as auth_router
 
-app = FastAPI()
+# Initialize FastAPI app
+app = FastAPI(
+    title=config.PROJECT_NAME,
+    description="Payment Gateway Service API",
+    version="1.0.0"
+)
 
+# Initialize database
+init_db()
+
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust this as needed
+    allow_origins=config.ALLOWED_HOSTS if config.ALLOWED_HOSTS else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(example_route.router)  # Include your routes here
+# Include routers
+app.include_router(auth_router)
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the FastAPI application!"}
+    """Root endpoint"""
+    return {
+        "message": "Welcome to Payment Gateway Service",
+        "version": "1.0.0",
+        "status": "running"
+    }
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint"""
+    return {"status": "OK", "message": "Service is healthy"}
+
+@app.get("/api/health")
+def api_health_check():
+    """API health check endpoint"""
+    return {"status": "OK", "message": "API service is running"}
