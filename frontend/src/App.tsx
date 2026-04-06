@@ -1,20 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import NotFoundPage from './pages/NotFoundPage';
-import './styles/index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from './hooks/useTheme';
+import { HomePage, LoginPage, RegisterPage } from './pages';
 
-const App: React.FC = () => {
-  return (
-    <Router>
+const App: React.FC = () => (
+  <ThemeProvider>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<HomePage />} path="/" />
+        <Route element={<LoginPage />} path="/login" />
+        <Route element={<RegisterPage />} path="/register" />
       </Routes>
-    </Router>
-  );
-};
+    </BrowserRouter>
+  </ThemeProvider>
+);
 
 export default App;
