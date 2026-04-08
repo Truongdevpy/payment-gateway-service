@@ -52,11 +52,11 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute left-[-5rem] top-[-4rem] h-72 w-72 rounded-full bg-cyan-300/12 blur-3xl" />
         <div className="absolute right-[-6rem] top-20 h-96 w-96 rounded-full bg-sky-500/14 blur-3xl" />
-        <div className="absolute bottom-[-10rem] left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-emerald-300/10 blur-3xl" />
+        <div className="absolute bottom-[-10rem] left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-emerald-300/10 blur-3xl md:h-96 md:w-96" />
         <div className="noise-grid absolute inset-0 opacity-70" />
       </div>
 
-      <div className="relative mx-auto grid min-h-screen max-w-7xl gap-8 px-4 py-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-8">
+      <div className="relative mx-auto grid min-h-screen max-w-7xl gap-6 px-4 py-4 sm:px-5 md:gap-8 lg:grid-cols-2 lg:px-6 lg:py-8 xl:px-8">
         <aside className="auth-panel hidden flex-col justify-between overflow-hidden rounded-[2rem] p-8 lg:flex xl:p-10">
           <div>
             <div className="flex items-center justify-between gap-4">

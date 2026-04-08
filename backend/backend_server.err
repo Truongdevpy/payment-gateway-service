@@ -1,0 +1,5 @@
+INFO:     Started server process [18400]
+INFO:     Waiting for application startup.
+Scheduler init skipped: No module named 'apscheduler'
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
